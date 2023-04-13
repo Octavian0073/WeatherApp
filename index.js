@@ -17,7 +17,7 @@ const thunderstorm = `<svg width="20px" height="20px" viewBox="0 0 512 512" xmln
 //1. Takes the input's value and uses it to set the url for the first fetch
 function findPlaces() {
     //2. Check if there is an input, and if the value property exists before accessing it, to prevent errors
-    if(input&&input?.value) {
+    if(input?.value) {
     //3. If there's not a value, no search list will be displayed
         list.innerHTML = '';
     } 
@@ -56,7 +56,7 @@ function chooseLocation(event) {
     const lat = listItem.getAttribute('lat');
     const lon = listItem.getAttribute('lon');
 
-    const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,weathercode,cloudcover,windspeed_10m&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=auto`;
+    const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,weathercode,windspeed_10m&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=auto`;
     fetch(weatherURL)
         .then((response) => response.json())
         .then((data) =>  {displayFullWeather(data, listItem); console.log(data);})
