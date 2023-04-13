@@ -239,7 +239,7 @@ function currentWeather(data) {
 //17. Check which svg coresponds to the current time weathercode, and reutrns it alongside the forecast descrpition
 function weather(data) {
     const currentCode = data.current_weather.weathercode;
-    if(currentCode) {
+    if(currentCode !== undefined && currentCode !== null && !isNaN(currentCode)) {
         if(currentCode === 0) {
             return `<span>Clear Sky </span>${clearSky}`;
         }
